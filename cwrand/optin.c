@@ -103,7 +103,7 @@ while((i = (char)getopt(argc, argv, "v:s:b:k:c:m:t:-:"))!= EOF){
 
                 else if(0 == memcmp(optarg, "print2", 6)){
                     #ifdef CWRAND_BUG
-                    printf("print mode setings. 1\n");
+                    printf("print mode setings. 2\n");
                     #endif
                     * mode = 2;
                     }
