@@ -1,0 +1,46 @@
+/* almemsys */
+
+   ALMEMSYS  ライブラリー インストールガイド
+
+以下で配布されています、
+
+  http://zither.ms-n.com
+
+落としたソースを展開します。
+
+  $ tar -xzf almemsys*.tar.gz
+  $ cd almemsys*
+
+通常はこのままmakeで問題ありません。
+動的なライブラリーと、静的なアーカイブが出来ていればOKです。
+
+  $ make
+  $ ls -la almemsys.a libalmemsys.so
+
+但しあなたの環境がLinuxの場合は-fPICオプションでmakeしてあげる必要
+がありますので、Makefileを編集してください。
+
+動的ライブラリの登録方法(Linux)
+出来たファイルを/usr/local/lib/などにコピーし、シンボリックリンク
+を作ります。
+
+  # cp -ip libalmemsys.so /usr/local/lib/
+  # cd /usr/local/lib ; pwd
+  # ln -s libalmemsys.so libalmemsys.so.0
+  # ls -la libalmemsys*
+  # ldconfig
+
+ちゃんと入っているかは以下で確認してください。
+
+  # ldconfig -p |grep almemsys
+
+動的ライブラリを使ってリンクする場合、cc のオプションに以下をつけて
+ください。
+
+例: gcc -lalmemsys -o mytest mytest.c
+
+
+
+
+
+

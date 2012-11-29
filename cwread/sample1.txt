@@ -1,0 +1,130 @@
+
+cq cq cq DE JF1SHX JF1SHX JF1SHX/1   
+ 
+ hr hr   
+
+qth  tokyo japan  tokyo japan     
+qth  jcc1201  chiba-city  chiba-city     
+qth  jcg12002  isumi  isumi    
+qth  jcg12002  taitou-misaki  taitou-misaki     
+qth  jcc1202  tyoushi tyoushi    
+qth  jcc1203  ichikawa  ichikawa     
+qth  jcc1204  funabashi  funabashi     
+qth  jcc1205  tateyama  tateyama     
+qth  jcc1206  kisarazu  kisarazu    
+qth  jcc1207  matsudo  matsudo     
+qth  jcc1208  noda  noda    
+qth  jcc1209  sawara  sawara    
+qth  jcc1210  mobara  mobara    
+qth  jcc1211  narita  narita    
+qth  jcc1212  sakura  sakura    
+qth  jcg12004  inba  inba    
+qth  jcc1213  tougane  tougane    
+qth  jcc1214  youkaichiba  youkaichiba      
+qth  jcc1215  asahi  asahi    
+qth  jcc1216  narashino  narashino    
+qth  jcc1217  kashiwa  kashiwa    
+qth  jcc1218  katsuura  katsuura    
+qth  jcg12005  kaijyou  kaijyou    
+qth  jcc120102  chiba hanamigawa-ku  chiba hanamigawa-ku    
+qth  jcc1219  ichihara  ichihara    
+qth  jcc1220  nagareyama  nagareyama    
+qth  jcc1221  yachiyo  yachiyo    
+qth  jcg12006  katori  katori    
+qth  jcc120103  chiba inage-ku  chiba inage-ku     
+qth  jcc1222  abiko  abko    
+qth  jcc1223  kamogawa  kamogawa    
+qth  jcg12008  sanbu  sanbu    
+qth  jcc1224  kimitsu  kimitsu    
+qth  jcc1225  kamagaya  kamagaya    
+qth  jcc120101  chiba cyuou-ku  chiba cyuou-ku    
+qth  jcg12009  sousa  sousa    
+qth  jcc1226  futsu  futsu    
+qth  jcc1227  urayasu  urayasu    
+qth  jcc1228  yotsukaidou  yotsukaidou    
+qth  jcc1229  sodegaura  sodegaura    
+qth  jcc1230  yachimata  yachimata    
+qth  jcc1231  inzai  inzai    
+qth  jcg12001  awa  awa    
+qth  jcg12012  higashi-katsushika  higashi-katsushika     
+qth  jcc120104  chiba wakaba-ku  chiba wakaba-ku     
+qth  jcg12011  tyousei  tyousei    
+qth  jcc120105  chiba midori-ku  chiba midori-ku    
+qth  jcc0101  sapporo sapporo     
+qth  jcc0109  yubari yubari     
+qth  jcc0123  nemuro nemuro     
+qth  jcc120106  chiba mihama-ku  chiba mihama-ku    
+qth  jcc0124  chitose chitose     
+qth  jcc0129  furano furano     
+qth  jcc0135  ishikari ishikari     
+qth  jcc0201  aomori aomori     
+qth  jcc0206  towada towada     
+qth  jcc1238  isumi isumi     
+qth  jcc0111  abashiri abashiri    
+
+<bt>  
+
+op  ken ken    
+op  tomo tomo     
+name  tanaka tanaka     
+op  kazu kazu     
+op  toshio toshio     
+name  satou satou     
+name  morita morita     
+op  hanako hanako     
+name  yamada yamada     
+op  taro taro    
+name  katagiri katagiri     
+op  shima shima     
+op  hori hori    
+name  oadagiri odagiri    
+name  suzuki suzuki     
+op  tony tony    
+name  yamamoto yamamoto     
+op  kay kay    
+name  kanayama kanayama     
+op  rin rin    
+op  hiromi hiromi    
+name  hatanaka hatanaka     
+op  hiro hiro    
+op  sachi sachi     
+
+<bt>  
+
+rig  ft-817nd ft-817nd     
+rig  ft-897 ft-897    
+rig  ic-7000 ic-7000     
+rig  kx1 kx1     
+rig  k2 k2     
+
+<bt>  
+
+ant  gp gp     
+ant  dp dp     
+ant  4ele yagi 4ele yagi 7MHz full     
+ant  eh eh     
+ant  loop loop     
+ant  hentena hentena     
+
+<bt>  
+
+,   ,   ,   ,   ,      
+.   .   .   .   .      
+:   :   :   :   :      
+?   ?   ?   ?   ?      
+-   -   -   -   -     
+(   (   (   (   (     
+)   )   )   )   )      
+=   =   =   =   <BT>     
+/   /   /   /   /     
++   +   +   +   <AR>     
+"   "   "   "   "     
+@   @   @   @   @     
+
+<AR>  DE  JF1SHX/1 gb 73 cl <VA>  E  E    
+
+
+
+
+
+
