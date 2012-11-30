@@ -28,10 +28,10 @@ int main(int argc, char ** argv)
   bb	 = 1;
   kk	 = 1;
 
-  stat.mode	   = 0;
+  stat.mode	= 0;
   stat.exa_mode = 0;
-  stat.start	   = 0;		// default の乱数の最小値
-  stat.stop	   = 48;	// default の乱数の最大値
+  stat.start	= 0;		// default の乱数の最小値
+  stat.stop	= 48;		// default の乱数の最大値
 
 
   buf = (char *)calloc(2, sizeof(char));
@@ -47,14 +47,13 @@ int main(int argc, char ** argv)
 
   // デフォルトの信号の長さ(3)と周波数(2)を設定
   cw_defaultset(&cw_len, 700, 80);
-  /* optin(argc, argv, &cw_len, &moji, &no, &mode, &exa_mode, &start_rand, &stop_rand, &bb, &kk);/ */
-  optin(argc, argv, &cw_len, &moji, &no, &stat, &bb, &kk);
+  optin(argc, argv, &cw_len, &moji, &stat, &bb, &kk);
 
   // beepデバイスファイルを開いてFDを得る
   fd = beep_fdopen(fd);
 
 #ifdef CWRAND_BUG
-  printf("ブロックの文字数: %d  繰り返し数: %d\n", moji, no);
+  printf("ブロックの文字数: %d  繰り返し数: %d\n", moji, stat.loop);
   printf("length_default:%d\n", cw_len.length_default);
   printf("exa_mode=%d mode=%d \n", exa_mode, mode);
   printf("rand start = %d rand stop = %d\n", start_rand, stop_rand);
@@ -64,11 +63,11 @@ int main(int argc, char ** argv)
   cw_len.cs = cw_len.sp * 2;  // 前の文字の後ろに1スペースあるので2
 
   // ワードの繰り返し
-  for(co2 = 0; co2 < no; co2++){
+  for(co2 = 0; co2 < stat.loop; co2++){
 
     // ワード
     for(co = 0; co < moji; co++){
-      inrand = (int)randdata(start_rand, stop_rand);
+      inrand = (int)randdata(stat.start, stat.stop);
       cha = cw_len.roman.char_sign[inrand];
 
       if(0 == anunnec(inrand, stat.exa_mode)){

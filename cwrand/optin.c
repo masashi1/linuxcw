@@ -33,7 +33,7 @@ static int usage (void)
   exit(1);
 }
 
-int optin(int argc, char * argv[], cw_length * cw_len, int * moji, int * co, CWRAND_STAT *stat, int * bb, int * kk)
+int optin(int argc, char * argv[], cw_length * cw_len, int * moji, CWRAND_STAT *stat, int * bb, int * kk)
 {
   char i;
   int sp, to, long_opt, opt_index;
@@ -53,7 +53,7 @@ int optin(int argc, char * argv[], cw_length * cw_len, int * moji, int * co, CWR
   sp = 0;
   to = 0;
   * moji = 5;
-  * co = 1;
+  stat -> loop = 1;
   stat -> mode = 0;
   stat -> exa_mode = 0;
   
@@ -93,14 +93,15 @@ int optin(int argc, char * argv[], cw_length * cw_len, int * moji, int * co, CWR
 	break;
 
       default:
-
 	break;
       }
+      break;
+      
     case 'c':
 #ifdef CWRAND_BUG
       printf("Frequency of CW pattern. <%s>\n", optarg);
 #endif
-      * co = strtol(optarg, (char **)NULL, 10);
+      stat->loop = strtol(optarg, (char **)NULL, 10);
       break; 
     case 'm':
 #ifdef CWRAND_BUG
