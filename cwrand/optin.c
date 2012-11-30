@@ -33,7 +33,7 @@ static int usage (void)
   exit(1);
 }
 
-int optin(int argc, char * argv[], cw_length * cw_len, int * moji, int * co, int * mode, int * exa_mode, int *start, int * stop, int * bb, int * kk)
+int optin(int argc, char * argv[], cw_length * cw_len, int * moji, int * co, CWRAND_STAT *stat, int * bb, int * kk)
 {
   char i;
   int sp, to, long_opt, opt_index;
@@ -54,9 +54,9 @@ int optin(int argc, char * argv[], cw_length * cw_len, int * moji, int * co, int
   to = 0;
   * moji = 5;
   * co = 1;
-  * mode = 0;
-  * exa_mode = 0;
-
+  stat -> mode = 0;
+  stat -> exa_mode = 0;
+  
   while ((i = (char)getopt_long(argc, argv, "v:s:b:k:c:m:t:-:hpPefrs", cwrand_long_opt, &opt_index))!= EOF) {
     switch (i) {
     case 0:
@@ -66,27 +66,30 @@ int optin(int argc, char * argv[], cw_length * cw_len, int * moji, int * co, int
 	break;
 	
       case 'p':
-	*mode = 1;
+	stat->mode = 1;
 	break;
 	
       case 'P':
-	*mode = 2;
+	stat->mode = 2;
 	break;
 
       case 'e':
-	*exa_mode = 1;
+	stat->exa_mode = 1;
 	break;
 
       case 'f':
-	*start = 0; *stop = 9;
+	stat->start = 0;
+	stat->stop  = 9;
 	break;
 
       case 'r':
-	*start = 10; *stop = 35;
+	stat->start = 10;
+	stat->stop  = 35;
 	break;
 	
       case 's':
-	*start = 10; *stop = 48;
+	stat->start = 10;
+	stat->stop  = 48;
 	break;
 
       default:

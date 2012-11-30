@@ -1,3 +1,4 @@
+/* -*- mode: C; -*- */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -6,7 +7,6 @@
 #include "libbeep.h"
 #include "libcw.h"
 #include "cwrand.h"
-
 
 int main(int argc, char ** argv)
 {
@@ -17,19 +17,21 @@ int main(int argc, char ** argv)
   char sw[2];
   char * buf;
   char * swap = sw;
+  CWRAND_STAT stat;
 
-  moji = 0;
-  co = 0;
-  fd = -1;
-  cha = 0x00;
+  moji	 = 0;
+  co	 = 0;
+  fd	 = -1;
+  cha	 = 0x00;
   inrand = 0;
-  mode = 0;
-  exa_mode = 0;
-  bb = 1;
-  kk = 1;
+  mode	 = 0;
+  bb	 = 1;
+  kk	 = 1;
 
-  start_rand = 0;  // default の乱数の最小値
-  stop_rand = 48;  // default の乱数の最大値
+  stat.mode	   = 0;
+  stat.exa_mode = 0;
+  stat.start	   = 0;		// default の乱数の最小値
+  stat.stop	   = 48;	// default の乱数の最大値
 
 
   buf = (char *)calloc(2, sizeof(char));
@@ -45,8 +47,8 @@ int main(int argc, char ** argv)
 
   // デフォルトの信号の長さ(3)と周波数(2)を設定
   cw_defaultset(&cw_len, 700, 80);
-
-  optin(argc, argv, &cw_len, &moji, &no, &mode, &exa_mode, &start_rand, &stop_rand, &bb, &kk);
+  /* optin(argc, argv, &cw_len, &moji, &no, &mode, &exa_mode, &start_rand, &stop_rand, &bb, &kk);/ */
+  optin(argc, argv, &cw_len, &moji, &no, &stat, &bb, &kk);
 
   // beepデバイスファイルを開いてFDを得る
   fd = beep_fdopen(fd);
@@ -69,12 +71,12 @@ int main(int argc, char ** argv)
       inrand = (int)randdata(start_rand, stop_rand);
       cha = cw_len.roman.char_sign[inrand];
 
-      if(0 == anunnec(inrand, exa_mode)){
+      if(0 == anunnec(inrand, stat.exa_mode)){
 	swap[0] = cha; 
 	buf = safe_strncat(buf, swap, BUF_MAX);
 	memset(swap, 0x00, 2);
 
-	if(mode == 0 || mode == 2){
+	if(stat.mode == 0 || stat.mode == 2){
 	  printf("%d  %c     %s\n", co2, cha, cw_len.roman.note_sign[inrand]);
 	}
 	for(co4 = 0; co4 < kk; co4++){
@@ -92,7 +94,7 @@ int main(int argc, char ** argv)
       cw_sign(&cw_len, fd, '*');
     }
 
-    if(mode == 1 || mode == 2){
+    if(stat.mode == 1 || stat.mode == 2){
       printf("%s\n", buf);
     }
 
