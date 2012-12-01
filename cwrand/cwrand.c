@@ -11,8 +11,7 @@
 int main(int argc, char ** argv)
 {
   int fd;
-  int moji, no, co, co2, co3, co4, inrand, mode, exa_mode, bb, kk;
-  int start_rand, stop_rand;
+  int moji, co, co2, co3, co4, inrand, bb, kk;
   char cha;
   char sw[2];
   char * buf;
@@ -24,7 +23,6 @@ int main(int argc, char ** argv)
   fd	 = -1;
   cha	 = 0x00;
   inrand = 0;
-  mode	 = 0;
   bb	 = 1;
   kk	 = 1;
 
