@@ -3,21 +3,32 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <signal.h>
 #include "almemsys.h"
 #include "libbeep.h"
 #include "libcw.h"
 #include "cwrand.h"
 
+/* Global Variables */
+static int fd;
+
+void intHandler(int signum)
+{
+  beep_off(fd);
+  beep_close(fd);
+  exit(EXIT_FAILURE);
+}
+
 int main(int argc, char ** argv)
 {
-  int fd;
   int moji, co, co2, co3, co4, inrand, bb, kk;
   char cha;
   char sw[2];
   char * buf;
   char * swap = sw;
   CWRAND_STAT stat;
-
+  struct sigaction sa;
+  
   moji	 = 0;
   co	 = 0;
   fd	 = -1;
@@ -31,7 +42,13 @@ int main(int argc, char ** argv)
   stat.start	= 0;		// default の乱数の最小値
   stat.stop	= 48;		// default の乱数の最大値
 
-
+  /* init & regist sigaction */
+  memset(&sa, 0, sizeof(sa));
+  sa.sa_handler = intHandler;
+  if (sigaction(SIGINT, &sa, NULL)){
+    perror("sigaction");
+  }
+  
   buf = (char *)calloc(2, sizeof(char));
   memset(swap, 0x00, 2);
 
