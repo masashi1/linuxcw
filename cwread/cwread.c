@@ -16,13 +16,13 @@ int main (int argc, char ** argv)
   CWREAD_STAT stat;
   cw_length cw_len;
 
-  /* initialize */
   fd	     = -1;
   chA	     = 0x00;
   chB	     = 0x00;
   stat.in    = (char *)calloc(2, sizeof(char));
   stat.tone  = DEFAULT_TONE;
   stat.speed = DEFAULT_SPEED;
+  /* initialize cw code database */
   cw_default_memset(&cw_len);
 
   optin(argc, argv, &cw_len, &stat);
