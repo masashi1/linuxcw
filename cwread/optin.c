@@ -53,17 +53,17 @@ int optin (int argc, char * argv[], cw_length * cw_len, CWREAD_STAT *stat)
       break;
       
     case 'f':
-      printf("open file name <%s>\n", optarg);
+      /* printf("open file name <%s>\n", optarg); */
       stat->in = safe_memcpy(stat->in, optarg, BUF_LEN);
       break; 
 
     case 's':
-      printf("cw speed set. <%s>\n", optarg);
+      /* printf("cw speed set. <%s>\n", optarg); */
       stat->speed = strtol(optarg, (char **)NULL, 10);
       break; 
 
     case 't':
-      printf("cw tone set. <%s>\n", optarg);
+      /* printf("cw tone set. <%s>\n", optarg); */
       stat->tone = strtol(optarg, (char **)NULL, 10);
       break;
 
