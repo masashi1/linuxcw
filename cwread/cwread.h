@@ -10,7 +10,6 @@ typedef struct {
   int   speed;
   int   tone;
   FILE *fp;
-  int   beep;
 } CWREAD_STAT;
 
 /* prototype */

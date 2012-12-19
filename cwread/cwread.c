@@ -1,6 +1,7 @@
 /* -*- C -*- */
 #include <stdio.h>
 #include <stdlib.h>
+#include <signal.h>
 #include "libbeep.h"
 #include "libcw.h"
 #include "cwread.h"
@@ -9,9 +10,18 @@
 #define  DEFAULT_TONE   700
 #define  MAX_BUF_SIZE   2048
 
+/* beep file descripter */
+int beepfd;
+
+void intHandler (int signum)
+{
+  beep_off(beepfd);
+  beep_close(beepfd);
+  exit(EXIT_FAILURE);
+}
+
 int cwread (cw_length *cw_len, CWREAD_STAT *stat)
 {
-  //  int chA = 0, chB = 0;
   char buf[MAX_BUF_SIZE];
   char *cp;
 
@@ -29,7 +39,7 @@ int cwread (cw_length *cw_len, CWREAD_STAT *stat)
       case ' ':
 	if (*(cp-1) == ' '){
 	  putchar('*');
-	  cw_sign(cw_len, stat->beep, '*');
+	  cw_sign(cw_len, beepfd, '*');
 	}
 	else{
 	  putchar(' ');
@@ -39,8 +49,8 @@ int cwread (cw_length *cw_len, CWREAD_STAT *stat)
 	
       default:
 	putchar(*cp);
-	cw_sign(cw_len, stat->beep, *cp);
-	cw_sign(cw_len, stat->beep, ' ');
+	cw_sign(cw_len, beepfd, *cp);
+	cw_sign(cw_len, beepfd, ' ');
 	break;
       }
       cp++;
@@ -53,6 +63,7 @@ int main (int argc, char ** argv)
 {
   CWREAD_STAT stat;
   cw_length cw_len;
+  struct sigaction sa;
 
   stat.in    = (char *)calloc(2, sizeof(char));
   stat.tone  = DEFAULT_TONE;
@@ -60,12 +71,20 @@ int main (int argc, char ** argv)
   /* initialize cw code database */
   cw_default_memset(&cw_len);
 
-  optin(argc, argv, &cw_len, &stat);
+  if (argc > 1)
+    optin(argc, argv, &cw_len, &stat);
   cw_defaultset(&cw_len, stat.tone, stat.speed);
 
   /* open beep device(/dev/console) */
-  stat.beep = beep_fdopen(stat.beep);
+  beepfd = beep_fdopen(beepfd);
 
+  /* init & regist sigaction */
+  memset(&sa, 0, sizeof(sa));
+  sa.sa_handler = intHandler;
+  if (sigaction(SIGINT, &sa, NULL)){
+    perror("sigaction");
+  }
+  
   if((stat.fp = fopen(stat.in, "r")) == NULL){
     stat.fp = stdin;
   }
@@ -73,7 +92,7 @@ int main (int argc, char ** argv)
   setbuf(stdout, NULL);
   cwread(&cw_len, &stat);
 
-  beep_close(stat.beep);
+  beep_close(beepfd);
   fclose(stat.fp);
   return 0;
 }

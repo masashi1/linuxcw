@@ -29,7 +29,7 @@ int usage (void)
 }
 
 
-/* Need more error check. */
+/* Need more error checking. */
 int optin (int argc, char * argv[], cw_length * cw_len, CWREAD_STAT *stat)
 {
   int i, opt_index;
@@ -74,6 +74,7 @@ int optin (int argc, char * argv[], cw_length * cw_len, CWREAD_STAT *stat)
     default:
       /* stat->in = safe_memcpy(stat->in, "/mmp/taro", BUF_LEN);
        * printf("file not open.\n"); */
+      usage();
       break;
     }
   }
