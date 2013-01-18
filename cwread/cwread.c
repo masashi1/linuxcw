@@ -15,7 +15,6 @@ int beepfd;
 
 void intHandler (int signum)
 {
-  beep_off(beepfd);
   beep_close(beepfd);
   exit(EXIT_FAILURE);
 }

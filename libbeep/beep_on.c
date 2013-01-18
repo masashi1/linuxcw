@@ -1,3 +1,4 @@
+/* -*- C -*- */
 
 #include <fcntl.h>
 #include <stdio.h>
@@ -5,8 +6,6 @@
 #include <sys/ioctl.h>
 #include <linux/kd.h>
 #include "libbeep.h"
-
-// int beep_on(int console_fd, int length, int freq);
 
 int beep_on(int console_fd, int length, int freq)
 {
@@ -22,7 +21,7 @@ int beep_on(int console_fd, int length, int freq)
   }
 
   if(ioctl(console_fd, KIOCSOUND, (int)(CLOCK_RATE/freq)) < 0) {
-    fprintf(stderr, "/dev/console のせっていができないみたいよ\n");
+    fprintf(stderr, "initialize error (%s)\n", CONSOLE_DEVICE);
     // ret = -1;
     exit(1);
   }
