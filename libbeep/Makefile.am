@@ -14,13 +14,12 @@ libbeep_a_SOURCES = \
 
 bin_PROGRAMS = libbeep_test beep_off
 
-libbeep_test_SOURCES = libbeep_test.c libbeep.h prototype.h 
+libbeep_test_SOURCES = libbeep_test.c libbeep.h
 libbeep_test_LDADD= -lbeep
 libbeep_test_LDFLAGS = -L. 
 libbeep_test_CFLAGS = 
 
-beep_off_SOURCES = beep_off.c libbeep.h prototype.h 
+beep_off_SOURCES = beep_off.c libbeep.h
 beep_off_LDADD= -lbeep
 beep_off_LDFLAGS = -L. 
 beep_off_CFLAGS = 
-
