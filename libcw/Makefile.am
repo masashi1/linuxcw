@@ -25,7 +25,7 @@ libcw_a_SOURCES = \
 
 bin_PROGRAMS = libcw_test
 
-libcw_test_SOURCES = libcw_test.c libcw.h libbeep.h prototype.h 
+libcw_test_SOURCES = libcw_test.c libcw.h libbeep.h
 libcw_test_LDADD= -lcw -lbeep
 libcw_test_LDFLAGS = -L. -L../libbeep
 libcw_test_CFLAGS =  -I../libbeep
