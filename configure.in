@@ -29,6 +29,7 @@ AC_CHECK_HEADERS([stdio.h \
                 netinet/in_systm.h \
                 netinet/ip.h \
                 fcntl.h \
+		ctype.h \
                 netinet/ip_icmp.h \
                 sys/un.h])
 

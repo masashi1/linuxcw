@@ -1,7 +1,7 @@
 @SET_MAKE@
 AUTOMAKE_OPTIONS = 1.10 no-dependencies
 
-CFLAGS = @MYCFLAGS@
+AM_CFLAGS = @MYCFLAGS@
 
 noinst_LIBRARIES = libbeep.a
 
