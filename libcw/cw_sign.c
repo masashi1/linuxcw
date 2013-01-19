@@ -1,5 +1,6 @@
 /* -*- mode: C; -*- */
 #include <stdio.h>
+#include <ctype.h>
 #include "libbeep.h"
 #include "libcw.h"
 
@@ -8,7 +9,9 @@ int cw_sign(cw_length * cw_len, int fd, char sign)
   int no;
   no = 0;
 
-  sign = char_replace(sign);
+  if (isalpha(sign))
+    sign = tolower(sign);
+
   no = char_no(cw_len, sign);
 
 #ifdef LIBCW_BUG

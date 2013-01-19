@@ -19,7 +19,6 @@ libcw_a_SOURCES = \
 	char_no.c \
 	char_no_wabun.c \
 	note_no.c \
-	char_replace.c \
 	cw_sign.c \
 	cw_sign_wabun.c
 
