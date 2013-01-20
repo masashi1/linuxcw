@@ -1,3 +1,7 @@
+2013-01-20  Tsuyoshi ICHIKAWA  <ace@momiage.org>
+
+	* libcw/libcw.h: define global variable, 'CW_MODE'
+
 2013-01-19  Tsuyoshi ICHIKAWA  <ace@momiage.org>
 
 	* libcw/cw_sign.c (cw_sign):

@@ -1,15 +1,18 @@
 /* -*- mode: C; -*- */
 #ifndef _LIBCW_H_
-
 #define _LIBCW_H_
 
 #define BUFF_LENG	10
 #define CHAR_LENG	67
 #define WCHAR_LENG	67
 
-#define CW_DEF_FREQ     700       // おとのたかさ KHzていどのつもりん
-#define CW_DEF_LENGTH   150       // おとのながさ
+#define CW_DEF_FREQ     700 	/* tone (KHz) */
+#define CW_DEF_LENGTH   150	/* length  */
 
+#define CW_MODE_BEEP    0
+#define CW_MODE_MP3     1
+
+static  int CW_MODE = CW_MODE_BEEP;
 typedef struct cw_len cw_length;
 
 struct cw_len{
@@ -52,6 +55,5 @@ int cw_default_memset_wabun(cw_length * cw_len);
 int char_no(cw_length * cw_len, char sign);
 int char_no_wabun(cw_length * cw_len, char * sign);
 int note_no(cw_length * cw_len, char * note);
-char char_replace(char ch);
 
 #endif
